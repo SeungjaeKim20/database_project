@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Movie List</h1>
+
+    <!-- 상단 통계 -->
+    <div>
+        <p>Total Movies: {{ total_movies }} | Average Rating: {{ avg_rating }}</p>
+    </div>
+
+    <!-- 검색 섹션 -->
+    <form method="get">
+        <input type="text" name="query" value="{{ query }}" placeholder="Search movies">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- 새 영화 추가 버튼 -->
+    <div>
+        <a href="/new/"><button>Add New Movie</button></a>
+    </div>
+
+    <!-- 장르 버튼 섹션 -->
+    <h3>Filter by Genre</h3>
+    <div class="genre-buttons">
+        {% for genre in genres %}
+            <a href="/genre/{{ genre }}"><button>{{ genre }}</button></a>
+        {% endfor %}
+    </div>
+
+    <!-- 영화 목록 섹션 -->
+    <ul class="movie-list">
+        {% for movie in movies %}
+            <li>
+                <a href="/movie/{{ movie.id }}">{{ movie.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
