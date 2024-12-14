@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit Movie</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <main>
+            <h1>Edit Movie: {{ movie['title'] }}</h1>
+            <form method="post" action="/movie/{{ movie['id'] }}/edit">
+                <input type="text" id="title" name="title" value="{{ movie['title'] }}" placeholder="Title" required><br>
+                <input type="text" id="genres" name="genres" value="{{ movie['genres'] }}" placeholder="Genres (comma-separated)" required><br>
+                <input type="number" id="averageRating" name="averageRating" value="{{ movie['averageRating'] }}" step="0.1" min="0" max="10" placeholder="Average Rating" required><br>
+                <input type="text" id="releaseYear" name="releaseYear" value="{{ movie['releaseYear'] }}" placeholder="Release Year" required><br>
+                <button type="submit">Save Changes</button>
+            </form>
+        </main>
+    </body>
+</html>
